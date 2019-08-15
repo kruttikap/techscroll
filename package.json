@@ -1,22 +1,18 @@
 {
-  "name": "techscroll",
+  "name": "Milestone6",
   "version": "1.0.0",
-  "description": "TechScroll is a news bulletin for anyone interested in keeping apace with technology. It was inspired by ycombinator's hackernews platform",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kruttikap/techscroll.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kruttikap/techscroll/issues"
-  },
-  "homepage": "https://github.com/kruttikap/techscroll#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.6.9",
+    "nodemon": "^1.19.1"
   }
 }
