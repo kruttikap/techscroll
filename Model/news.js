@@ -9,11 +9,11 @@ const newsSchema = new Schema({
     url : {
         type : String,
         required : false
-    },
-    id : {
-        type : String,
-        required : false
-    } 
+    }
+    // id : {
+    //     type : String,
+    //     required : false
+    // } 
 
 });
 
