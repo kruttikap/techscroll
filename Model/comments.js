@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const commentsSchema = new Schema({
     comments : {
         type : String, 
-        required : false
+        required : true
     }
 
 });
