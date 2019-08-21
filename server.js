@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express();
-const news = require('./Model/news')
+const News = require('./Model/news')
 const db = require('./config/keys').db;
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   
 app.get('/getnews', (req, res) => {
     
-    news.find().then(post=>{
+    News.find().then(post=>{
         if(!post){
            return res.status(404).json({
                nopost:"no post found"
@@ -28,6 +28,7 @@ app.get('/getnews', (req, res) => {
             })
              
         }
+        console.log(post)
         res.json(post)
     
     })
@@ -44,9 +45,10 @@ mongoose.connect(db,{useNewUrlParser:true},() => {
 
 app.post('/register', (req, res) => {
     const {title,url} = req.body;
+    console.log(title, url)
     const news = new News({
-        title,
-        url
+        title : title,
+        url : url
 })     
 
 .save()
@@ -57,5 +59,34 @@ app.post('/register', (req, res) => {
         res.json(err)
     })
 });
+
+app.get('/old_posts', (req, res) => {
+    
+    News.find({
+        timestamp: {
+            $gte: new Date(new Date() -  60 * 60  * 1000)
+        }
+    }).then(post=>{
+        if(!post){
+           return res.status(404).json({
+               nopost:"no post found"
+
+            })
+             
+        }
+        res.json(post)
+    
+    })
+
+   //news.find({
+   //     timestamp: {
+   //         $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000)
+    //    }
+   // });
+    
+    //console.log('Hello');
+    
+})
+
 const port =3000;
 app.listen(port)
